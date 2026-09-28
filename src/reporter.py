@@ -1,6 +1,3 @@
-from pandas import pd
-
-
 class DataFrameReporter:
     
     def __init__(self, float_format='0.05f', percent_format='0.02%', include_all=False):
@@ -19,3 +16,9 @@ class DataFrameReporter:
         print('Количество дубликатов:', duplicates)
 
         print('Доля дубликатов:', format(duplicates / df.shape[0], self.percent_format))
+
+        print(df.describe(include='all' if self.include_all else None))
+        
+        print('Количество пропусков:', df.isna().sum().sum())
+        
+        print('Доля пропусков:', format((df.isna().mean(axis=None)), self.float_format))
