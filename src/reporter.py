@@ -12,7 +12,7 @@ class DataFrameReporter:
         print('Количество столбцов:', df.shape[1])
         print('Количество строк:', df.shape[0])
 
-        duplicates = df.duplicate().sum()
+        duplicates = df.duplicated().sum()
         print('Количество дубликатов:', duplicates)
 
         print('Доля дубликатов:', format(duplicates / df.shape[0], self.percent_format))
